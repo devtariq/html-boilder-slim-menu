@@ -1,0 +1,201 @@
+/*===============================================
+2. Common Style
+ ===============================================*/
+.overly {
+    position: relative;
+    z-index : 1;
+
+    &::before {
+        position  : absolute;
+        content   : "";
+        left      : 0;
+        top       : 0;
+        width     : 100%;
+        height    : 100%;
+        z-index   : -1;
+        background: $primary;
+    }
+}
+.section-padding{
+    padding: 80px 0;
+}
+.sub-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    font-size: 16px;
+    padding: 17px 45px;
+    font-weight: 700;
+    &:focus,
+    &::visted {
+        box-shadow: none;
+    }
+}
+
+.btn-primary:focus {
+    box-shadow: none !important;
+}
+
+
+a#scrollUp {
+    right    : 40px;
+    bottom   : 60px;
+    font-size: 50px;
+    width    : 40px;
+    height   : 70px;
+    color    : $white;
+    @include transition();
+
+    &::before {
+        position         : absolute;
+        content          : "\f119";
+        font-family      : flaticon;
+        -webkit-animation: 1.5s ease-in-out 0s normal none infinite running updown;
+        animation        : 1.5s ease-in-out 0s normal none infinite running updown;
+        left             : 65%;
+        transform        : translateX(-50%);
+    }
+
+    &::after {
+        position     : absolute;
+        left         : -5px;
+        top          : -22px;
+        width        : 60px;
+        height       : 60px;
+        background   : $primary;
+        content      : "";
+        border-radius: 50%;
+        z-index      : -1;
+    }
+}
+.btn-outline-secondary{
+    border: 1px solid $brand-pink;
+    color: $brand-pink;
+}
+
+#preloader {
+    position        : fixed;
+    top             : 0;
+    left            : 0;
+    right           : 0;
+    bottom          : 0;
+    background-color: #f7f7f7;
+    z-index         : 999999;
+}
+
+.preloader {
+    width      : 50px;
+    height     : 50px;
+    display    : inline-block;
+    padding    : 0px;
+    text-align : left;
+    box-sizing : border-box;
+    position   : absolute;
+    top        : 50%;
+    left       : 50%;
+    margin-left: -25px;
+    margin-top : -25px;
+
+    span {
+        position         : absolute;
+        display          : inline-block;
+        width            : 50px;
+        height           : 50px;
+        border-radius    : 100%;
+        background       : $primary;
+        -webkit-animation: preloader 1.3s linear infinite;
+        animation        : preloader 1.3s linear infinite;
+
+        &:last-child {
+            animation-delay        : -0.8s;
+            -webkit-animation-delay: -0.8s;
+        }
+    }
+
+}
+
+
+@keyframes preloader {
+    0% {
+        transform: scale(0, 0);
+        opacity  : 0.5;
+    }
+
+    100% {
+        transform: scale(1, 1);
+        opacity  : 0;
+    }
+}
+
+@-webkit-keyframes preloader {
+    0% {
+        -webkit-transform: scale(0, 0);
+        opacity          : 0.5;
+    }
+
+    100% {
+        -webkit-transform: scale(1, 1);
+        opacity          : 0;
+    }
+}
+
+// OWL CAROUSEL NAV AND DOT CSS
+.owl-nav button {
+    position  : absolute;
+    left      : -22px;
+    top       : 60%;
+    transform : translateY(-50%);
+    background: $white !important;
+    width     : 44px;
+    height    : 44px;
+    text-align: center;
+    display   : inline-table;
+    @include box-shadow(0 2px 15px 5px rgba(0, 0, 0, .05));
+    @include border-radius(50%);
+
+    @include mobile {
+        left: -10px;
+    }
+
+    &.owl-next {
+        left : auto;
+        right: -22px;
+
+        @include mobile {
+            right: -10px;
+        }
+    }
+
+    span {
+        color      : $headings-color;
+        font-size  : 32px;
+        line-height: .75;
+    }
+}
+
+.owl-dots {
+    text-align: center;
+    margin-top: 50px;
+
+    .owl-dot {
+        span {
+            width                      : 10px;
+            height                     : 7px;
+            margin                     : 5px 7px;
+            background                 : #80a0ae;
+            display                    : block;
+            -webkit-backface-visibility: visible;
+            transition                 : opacity .2s ease;
+            border-radius              : 30px;
+        }
+
+        &.active {
+            span {
+                width     : 30px;
+                background: $white;
+            }
+        }
+    }
+}
